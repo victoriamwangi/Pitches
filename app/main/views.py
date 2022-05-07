@@ -4,5 +4,6 @@ from . import main
 
 @main.route('/')
 def index():
-    return render_template('index.html')
+    title = "Pitches"
+    return render_template('index.html', title = title)
         
