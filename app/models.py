@@ -1,11 +1,13 @@
 from . import db 
-from werkzeug.security import generate_password_hash,check_password_hash
+from werkzeug.security import generate_password_hash,check_password_hash 
+from flask_login import UserMixin
 
-class User(db.Model):
+
+class User(UserMixin, db.Model):
     __tabel__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(85))
-    user_name = db.Column(db.String(85))
+    user_name = db.Column(db.String(85), nullable= False)
+    email = db.Column(db.String(255), unique=True, index= True)
     pass_secure = db.Column(db.String(255))
     
     @property
