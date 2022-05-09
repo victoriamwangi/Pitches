@@ -13,6 +13,10 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(255), unique=True, index= True)
     pass_secure = db.Column(db.String(255))
     pitches = db.relationship('Pitch', backref = 'user', lazy= 'dynamic')
+    def save_pitch(self):
+        
+        db.session.add(self)
+        db.session.commit()   
     
     @property
     def password(self): 
@@ -28,14 +32,14 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f'User{self.username}'
     
-class Pitch(db.model):
+class Pitch(db.Model):
     __pitches__ = 'pitches'
     id = db.Column(db.Integer, primary_key = True)
     pitch_id = db.Column(db.Integer)
     pitch_title = db.Column(db.String(255), nullable=False)
     pitch_content = db.Column(db.String(255))
     posted = db.Column(db.DateTime, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     
     def save_pitch(self):
         db.session.add(self)
