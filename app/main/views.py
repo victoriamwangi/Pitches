@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for, abort
 from . import main
-from .. import db
+from .. import db, photos
 from ..models import User, Pitch
 from flask_login import login_required, current_user
 from .forms import PitchForm, UpdateProfile
@@ -19,29 +19,32 @@ def profile(uname):
     if user is None:
         abort(404)
 
-    return render_template("profile/profile.html", user=user)
+    return render_template("profile/profile.html", user=uname)
 
 
-@main.route('/pitches/new', methods = ['GET', 'POST'])
+@main.route('/user/<uname>/pitches/new', methods = ['GET', 'POST'])
 @login_required
-def new_pitch(id):
-    form = PitchForm
+def new_pitch(uname):
+    user = User.query.filter_by(username=uname).first()
+  
+    
+    # id_user = User.query.filter_by(i).first()
+    
+    if user is None:
+        abort(404)
+  
+    form = PitchForm()
     if form.validate_on_submit():
-        title = form.title.data
-        pitch_content = form.pitch_content.data
+       
+        
+        new_pitch = Pitch(pitch_title = form.pitch_title.data, pitch_content = form.pitch_content.data, user_id=user.id)
+        db.session.add(new_pitch)
+        db.session.commit()
 
-        # Updated review instance
-        new_pitch = Pitch(title = title, pitch=pitch_content,user=current_user)
-
-        # save review method
-        new_pitch.save_pitch()
-        return redirect(url_for('.profile',id = id ))
+        return redirect(url_for('.profile', uname=user.username ))
 
     
-    return render_template('new_pitch.html',title = title, pitch_form=form)
-
-
-
+    return render_template('new_pitch.html', pitch_form=form, user=uname)
 
 @main.route('/user/<uname>/update', methods=['GET', 'POST'])
 @login_required

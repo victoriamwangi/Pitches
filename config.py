@@ -1,9 +1,9 @@
 import os
 class Config():
     
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:4798@localhost/pitches'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:4798@localhost/pitch'
     SECRET_KEY = os.environ.get('SECRET_KEY')
-
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
 
 class DevConfig(Config):
     DEBUG = True

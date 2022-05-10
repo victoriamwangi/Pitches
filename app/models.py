@@ -4,20 +4,19 @@ from flask_login import UserMixin
 from datetime import datetime
 
 @login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+def load_user(id):
+    return User.query.get(int(id))
 class User(UserMixin, db.Model):
-    __tabel__ = 'users'
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(85), nullable= False)
     email = db.Column(db.String(255), unique=True, index= True)
     pass_secure = db.Column(db.String(255))
-    pitches = db.relationship('Pitch', backref = 'user', lazy= 'dynamic')
-    def save_pitch(self):
-        
-        db.session.add(self)
-        db.session.commit()   
+    bio = db.Column(db.String(255))
+    profile_pic_path = db.Column(db.String())
+    pitches = db.relationship('Pitch', backref = 'users', lazy= 'dynamic')
     
+  
     @property
     def password(self): 
         raise AttributeError('You cannot read the password attribute')
@@ -32,14 +31,15 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f'User{self.username}'
     
-class Pitch(db.Model):
-    __pitches__ = 'pitches'
+class Pitch( db.Model):
+    __tablename__ = 'pitches'
     id = db.Column(db.Integer, primary_key = True)
-    pitch_id = db.Column(db.Integer)
     pitch_title = db.Column(db.String(255), nullable=False)
     pitch_content = db.Column(db.String(255))
     posted = db.Column(db.DateTime, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
+
     
     def save_pitch(self):
         db.session.add(self)
@@ -48,9 +48,17 @@ class Pitch(db.Model):
     def get_pitches(cls, id):
         pitches = Pitch.query.filter_by(user_id = id).all() #retrieve all pitches by that user
         return pitches
-        
-        
-        
 
 
-#for fruint_name in session.query(Fruit.name):
+class Category( db.Model):
+    __tablename__ = "categories"
+    id = db.Column(db.Integer, primary_key = True)
+    category_name = db.Column(db.String(255))
+    pitch =  db.relationship('Pitch', backref='categories', lazy="dynamic")
+    
+    def __repr__(self):
+        return f'Pitch{self. category_name }'
+
+ 
+
+
