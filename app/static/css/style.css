@@ -85,6 +85,16 @@
 #registerFrm button {
     background: #554898;
 }
-.cats{
-    
+
+.cats #downvote {
+    background-color: red !important;
+    color: white !important;
+    font-weight: bold;
+    border: none;
+}
+
+.cats #upvote {
+    background-color: green !important;
+    color: white !important;
+    font-weight: bold;
 }
