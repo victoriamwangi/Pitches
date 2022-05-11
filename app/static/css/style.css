@@ -64,12 +64,24 @@
 #form-log {
     border-radius: 5px;
     box-shadow: 1px 1px 5px;
-    margin-top: 5vw;
+    margin-top: 5vw !important;
+    width: 55vw;
 }
 
 #registerFrm {
     border-radius: 5px;
+    margin-top: 5vw !important;
     box-shadow: 1px 1px 5px;
-    width: 35vw;
+    width: 55vw;
     height: 70vh !important;
+}
+
+#registerFrm h3,
+#form-log h3 {
+    color: #554898;
+    font-weight: bold;
+}
+
+#registerFrm button {
+    background: #554898;
 }
