@@ -21,11 +21,6 @@ def index():
   
     return render_template('index.html',science = science,computing= computing,  business=business, fashion = fashion,pitches = pitches, title= title)
 
-# @main.route('/pitches')
-# def pitches():
-#     title = "Pitches"
-#     pitches = Pitch.query_filter_by(category_name= 'category_name').all()
-#     return render_template('all_categories.html', title = title, pitches= pitches)
 
 @main.route('/categories/<categoryeach>')
 def categories(categoryeach):
@@ -35,19 +30,7 @@ def categories(categoryeach):
     return render_template('categories.html', title= title, category=category)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-@main.route('/add/<uname>')
+@main.route('/add/<uname>/pitches/new')
 @login_required
 def add(uname):
     user = User.query.filter_by(username=uname).first()

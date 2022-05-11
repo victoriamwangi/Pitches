@@ -30,7 +30,7 @@
         <div class="col-lg-8">
           <div class="card-deck">
             <div class="card">
-              <img class="card-img-top" src="holder.js/100x180/" alt="" />
+              
               <div class="card-body">
                 <h4 class="card-title">SCIENCE PITCHES</h4>
                 <p class="card-text">
@@ -45,18 +45,32 @@
                   role="button"
                   >VIEW PITCHES</a
                 >
+              {% if current_user.is_authenticated %}
+
                 <a
                   name=""
                   id="add"
                   class="btn btn-primary"
-                  href="/add"
+                  href="{{url_for('main.new_pitch',uname=current_user.username)}}"
                   role="button"
                   >ADD PITCH</a
                 >
+                {%else%}
+
+                <a
+                  name=""
+                  id="add"
+                  class="btn btn-primary"
+                  href="{{url_for('auth.login')}}"
+                  role="button"
+                  >ADD PITCH</a
+                >
+        {%endif%}
+
               </div>
             </div>
             <div class="card">
-              <img class="card-img-top" src="holder.js/100x180/" alt="" />
+             
               <div class="card-body">
                 <h4 class="card-title">COMPUTING PITCHES</h4>
                 <p class="card-text">
@@ -67,18 +81,32 @@
                   name=""
                   id="view"
                   class="btn btn-primary"
-                  href="/categories"
+                  href="{{url_for("main.categories", categoryeach= "computing")}}"
+
                   role="button"
                   >VIEW PITCHES</a
                 >
+              {% if current_user.is_authenticated %}
+
                 <a
                   name=""
                   id="add"
                   class="btn btn-primary"
-                  href="/add"
+                  href="{{url_for('main.new_pitch',uname=current_user.username)}}"
                   role="button"
                   >ADD PITCH</a
                 >
+                {%else%}
+
+                <a
+                  name=""
+                  id="add"
+                  class="btn btn-primary"
+                  href="{{url_for('auth.login')}}"
+                  role="button"
+                  >ADD PITCH</a
+                >
+        {%endif%}
               </div>
             </div>
           </div>
@@ -91,7 +119,7 @@
         <div class="col-lg-8">
           <div class="card-deck">
             <div class="card">
-              <img class="card-img-top" src="holder.js/100x180/" alt="" />
+            
               <div class="card-body">
                 <h4 class="card-title">BUSINESS PITCHES</h4>
                 <p class="card-text">
@@ -101,22 +129,36 @@
                   name=""
                   id="view"
                   class="btn btn-primary"
-                  href="#"
+                  href="{{url_for("main.categories", categoryeach= "business")}}"
+
                   role="button"
                   >VIEW PITCHES</a
                 >
+               {% if current_user.is_authenticated %}
+
                 <a
                   name=""
                   id="add"
                   class="btn btn-primary"
-                  href="/add"
+                  href="{{url_for('main.new_pitch',uname=current_user.username)}}"
                   role="button"
                   >ADD PITCH</a
                 >
+                {%else%}
+
+                <a
+                  name=""
+                  id="add"
+                  class="btn btn-primary"
+                  href="{{url_for('auth.login')}}"
+                  role="button"
+                  >ADD PITCH</a
+                >
+        {%endif%}
               </div>
             </div>
             <div class="card">
-              <img class="card-img-top" src="holder.js/100x180/" alt="" />
+              
               <div class="card-body">
                 <h4 class="card-title">FASHION PITCHES</h4>
                 <p class="card-text">
@@ -127,18 +169,32 @@
                   name=""
                   id="view"
                   class="btn btn-primary"
-                  href="#"
+                  href="{{url_for("main.categories", categoryeach= "fashion")}}"
+
                   role="button"
                   >VIEW PITCHES</a
                 >
+              {% if current_user.is_authenticated %}
+
                 <a
                   name=""
                   id="add"
                   class="btn btn-primary"
-                  href="/add"
+                  href="{{url_for('main.new_pitch',uname=current_user.username)}}"
                   role="button"
                   >ADD PITCH</a
                 >
+                {%else%}
+
+                <a
+                  name=""
+                  id="add"
+                  class="btn btn-primary"
+                  href="{{url_for('auth.login')}}"
+                  role="button"
+                  >ADD PITCH</a
+                >
+        {%endif%}
               </div>
             </div>
           </div>

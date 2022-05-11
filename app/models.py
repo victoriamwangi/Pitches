@@ -39,6 +39,10 @@ class Pitch( db.Model):
     posted = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     category_name = db.Column(db.String, nullable= False)
+    upvote = db.Column(db.Integer)
+    downvote = db.Column(db.Integer)
+    comments = db.Column(db.String(255))
+    
 
     
     def save_pitch(self):

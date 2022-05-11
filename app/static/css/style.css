@@ -31,7 +31,7 @@
     width: 50vw;
     height: 40vh;
     padding-left: 2vw;
-    margin: 1.1vw 3vw;
+    margin: 2vw 3vw;
     box-shadow: 1px 1px 5px grey;
     border-radius: 5px;
 }
@@ -84,4 +84,7 @@
 
 #registerFrm button {
     background: #554898;
+}
+.cats{
+    
 }
