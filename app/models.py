@@ -38,7 +38,7 @@ class Pitch( db.Model):
     pitch_content = db.Column(db.String(255))
     posted = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
+    category_name = db.Column(db.String(220), nullable= False)
 
     
     def save_pitch(self):
@@ -50,14 +50,7 @@ class Pitch( db.Model):
         return pitches
 
 
-class Category( db.Model):
-    __tablename__ = "categories"
-    id = db.Column(db.Integer, primary_key = True)
-    category_name = db.Column(db.String(255))
-    pitch =  db.relationship('Pitch', backref='categories', lazy="dynamic")
-    
-    def __repr__(self):
-        return f'Pitch{self. category_name }'
+
 
  
 

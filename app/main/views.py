@@ -1,3 +1,4 @@
+from unicodedata import category
 from flask import render_template, request, redirect, url_for, abort
 from . import main
 from .. import db, photos
@@ -26,25 +27,20 @@ def profile(uname):
 @login_required
 def new_pitch(uname):
     user = User.query.filter_by(username=uname).first()
-  
-    
-    # id_user = User.query.filter_by(i).first()
     
     if user is None:
         abort(404)
   
     form = PitchForm()
-    if form.validate_on_submit():
-       
-        
-        new_pitch = Pitch(pitch_title = form.pitch_title.data, pitch_content = form.pitch_content.data, user_id=user.id)
+  
+
+    if form.validate_on_submit():      
+        new_pitch = Pitch(pitch_title = form.pitch_title.data, pitch_content = form.pitch_content.data, user_id=user.id, category_name= form.category_name.data) #, category_id =Category.category_name
         db.session.add(new_pitch)
         db.session.commit()
 
-        return redirect(url_for('.profile', uname=user.username ))
-
-    
-    return render_template('new_pitch.html', pitch_form=form, user=uname)
+        return redirect(url_for('.profile', uname=user.username))
+    return render_template('new_pitch.html', pitch_form=form, user=uname )
 
 @main.route('/user/<uname>/update', methods=['GET', 'POST'])
 @login_required

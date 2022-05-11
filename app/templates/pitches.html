@@ -1,5 +1,10 @@
 {%extends 'base.html'%} {%import 'bootstrap/wtf.html' as wtf%} {%block content%}
-<h1>you ptched</h1>
+
+<h1>hehe</h1>
+{% for category in category %}
+<option value="{{category.id}}">{{category.category_name}}</option>
+
+{% endfor %}
 
 <div class="container">
   <div class="row">
