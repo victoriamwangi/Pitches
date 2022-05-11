@@ -10,8 +10,30 @@ from .forms import PitchForm, UpdateProfile
 
 @main.route('/')
 def index():
+    pitches = Pitch.query.all()    
     title = "Pitches"
-    return render_template('index.html', title = title)
+    pitches = Pitch.query.all()
+    science = Pitch.query.filter_by(category_name='science').all()
+    computing = Pitch.query.filter_by(category_name='computing').all()
+    business = Pitch.query.filter_by(category_name='business').all()
+    fashion = Pitch.query.filter_by(category_name='fashion').all()
+    
+  
+    return render_template('index.html',science = science,computing= computing,  business=business, fashion = fashion,pitches = pitches, title= title)
+
+@main.route('/pitches')
+def pitches():
+    title = "Pitches"
+    pitches = Pitch.query_filter_by(category_name= 'category_name').all()
+    
+    return render_template('all_categories.html', title = title, pitches= pitches)
+
+@main.route('/categories/ <categoryEach>')
+def categories(categoryEach):
+    category = Pitch.get_pitches(categoryEach)
+    title = f'{categoryEach}'
+    
+    return render_template('categories.html', title= title, category=category)
 
 @main.route('/user/<uname>')
 def profile(uname):

@@ -38,17 +38,18 @@ class Pitch( db.Model):
     pitch_content = db.Column(db.String(255))
     posted = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    category_name = db.Column(db.String(220), nullable= False)
+    category_name = db.Column(db.String, nullable= False)
 
     
     def save_pitch(self):
         db.session.add(self)
         db.session.commit()    
+    
+    
     @classmethod
-    def get_pitches(cls, id):
-        pitches = Pitch.query.filter_by(user_id = id).all() #retrieve all pitches by that user
-        return pitches
-
+    def get_pitches(cls, categoryEach):
+        pitch = Pitch.query.filter_by(category_name = categoryEach).all()
+        return pitch
 
 
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {%block content%}
+    <div class="container">
+      <div class="row">
+        {%if category%} {%for categor in category%}
+        <div class="col-lg-2">{{categor}}</div>
+        <div class="col-lg-8">Column</div>
+        <div class="col-lg-2">Column</div>
+        {%endfor %} {%endif%}
+      </div>
+      {%endif%}
+    </div>
+    {%endblock%}
+  </body>
+</html>

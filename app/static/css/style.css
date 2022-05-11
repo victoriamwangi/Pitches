@@ -33,12 +33,43 @@
     padding-left: 2vw;
     margin: 1.1vw 3vw;
     box-shadow: 1px 1px 5px grey;
+    border-radius: 5px;
+}
+
+.card-title {
+    color: #554898;
+    font-size: bold;
+    font-weight: bold;
 }
 
 .card-body .btn {
     background-color: transparent;
-    border: 1px red solid !important;
+    border: 1px #554898 solid !important;
     width: 10vw;
     margin-top: 2.1vw;
+    font-weight: bold;
     color: #554898;
+}
+
+#add {
+    background-color: rgb(212, 91, 91) !important;
+    color: white;
+}
+
+#view {
+    background-color: #554898 !important;
+    color: white !important;
+}
+
+#form-log {
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px;
+    margin-top: 5vw;
+}
+
+#registerFrm {
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px;
+    width: 35vw;
+    height: 70vh !important;
 }
