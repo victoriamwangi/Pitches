@@ -1,0 +1,44 @@
+.navbar {
+    background-color: #554898;
+}
+
+.navbar-brand {
+    color: red !important;
+    font-weight: bold;
+    font-size: 1.8vw;
+    padding-left: 3vw;
+}
+
+.navbar-nav {
+    padding-left: 30vw !important;
+}
+
+.navbar-nav li a {
+    padding-left: 1.5vw;
+    color: white !important;
+    font-weight: 900;
+    font-size: 1.2vw;
+}
+
+.card-deck {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.card {
+    width: 50vw;
+    height: 40vh;
+    padding-left: 2vw;
+    margin: 1.1vw 3vw;
+    box-shadow: 1px 1px 5px grey;
+}
+
+.card-body .btn {
+    background-color: transparent;
+    border: 1px red solid !important;
+    width: 10vw;
+    margin-top: 2.1vw;
+    color: #554898;
+}

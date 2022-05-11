@@ -12,11 +12,104 @@
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
       crossorigin="anonymous"
     />
+    {%extends 'base.html'%} {% block styles%}{{super()}}
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/style.css')}}"
+    />
+    {%endblock%}
   </head>
 
   <body>
     {%block navbar%}{% include 'navbar.html' %}{% endblock%} {% block content %}
-    <h1>wweeelll</h1>
+
+    <div class="row">
+      <div class="col-lg-2"></div>
+
+      <div class="col-lg-8">
+        <div class="card-deck">
+          <div class="card">
+            <img class="card-img-top" src="holder.js/100x180/" alt="" />
+            <div class="card-body">
+              <h4 class="card-title">SCIENCE PITCHES</h4>
+              <p class="card-text">
+                loahdasjdsdbc mdvjalhfdakffv
+                ksdjfksjdfns,dnflksdfnsdnfLDFloahdasjdsdbc mdvjalhfdakffv
+                ksdjfksjdfns,dnflksdfnsdnfLDF
+              </p>
+              <a name="" id="" class="btn btn-primary" href="#" role="button"
+                >VIEW PITCHES</a
+              >
+              <a name="" id="" class="btn btn-primary" href="#" role="button"
+                >ADD PITCH</a
+              >
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img-top" src="holder.js/100x180/" alt="" />
+            <div class="card-body">
+              <h4 class="card-title">COMPUTING PITCHES</h4>
+              <p class="card-text">
+                loahdasjdsdbc mdvjalhfdakffv
+                ksdjfksjdfns,dnflksdfnsdnfLDFloahdasjdsdbc mdvjalhfdakffv
+                ksdjfksjdfns,dnflksdfnsdnfLDF
+              </p>
+              <a name="" id="" class="btn btn-primary" href="#" role="button"
+                >VIEW PITCHES</a
+              >
+              <a name="" id="" class="btn btn-primary" href="#" role="button"
+                >ADD PITCH</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+    <div class="row">
+      <div class="col-lg-2"></div>
+
+      <div class="col-lg-8">
+        <div class="card-deck">
+          <div class="card">
+            <img class="card-img-top" src="holder.js/100x180/" alt="" />
+            <div class="card-body">
+              <h4 class="card-title">BUSINESS PITCHES</h4>
+              <p class="card-text">
+                loahdasjdsdbc mdvjalhfdakffv
+                ksdjfksjdfns,dnflksdfnsdnfLDFloahdasjdsdbc mdvjalhfdakffv
+                ksdjfksjdfns,dnflksdfnsdnfLDF
+              </p>
+              <a name="" id="" class="btn btn-primary" href="#" role="button"
+                >VIEW PITCHES</a
+              >
+              <a name="" id="" class="btn btn-primary" href="#" role="button"
+                >ADD PITCH</a
+              >
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img-top" src="holder.js/100x180/" alt="" />
+            <div class="card-body">
+              <h4 class="card-title">FASHION PITCHES</h4>
+              <p class="card-text">
+                loahdasjdsdbc mdvjalhfdakffv
+                ksdjfksjdfns,dnflksdfnsdnfLDFloahdasjdsdbc mdvjalhfdakffv
+                ksdjfksjdfns,dnflksdfnsdnfLDF
+              </p>
+              <a name="" id="" class="btn btn-primary" href="#" role="button"
+                >VIEW PITCHES</a
+              >
+              <a name="" id="" class="btn btn-primary" href="#" role="button"
+                >ADD PITCH</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+
     {%endblock%}
   </body>
 </html>
