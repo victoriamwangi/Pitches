@@ -1,2 +1,2 @@
-export SECRET_KEY='TTTTT'
+export SECRET_KEY='TTTTTT'
 python3.9 manage.py server
