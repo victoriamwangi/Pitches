@@ -21,20 +21,40 @@ def index():
   
     return render_template('index.html',science = science,computing= computing,  business=business, fashion = fashion,pitches = pitches, title= title)
 
-@main.route('/pitches')
-def pitches():
-    title = "Pitches"
-    pitches = Pitch.query_filter_by(category_name= 'category_name').all()
-    
-    return render_template('all_categories.html', title = title, pitches= pitches)
+# @main.route('/pitches')
+# def pitches():
+#     title = "Pitches"
+#     pitches = Pitch.query_filter_by(category_name= 'category_name').all()
+#     return render_template('all_categories.html', title = title, pitches= pitches)
 
-@main.route('/categories/ <categoryEach>')
-def categories(categoryEach):
-    category = Pitch.get_pitches(categoryEach)
-    title = f'{categoryEach}'
+@main.route('/categories/<categoryeach>')
+def categories(categoryeach):
+    category = Pitch.get_pitches(categoryeach)
+    title = f'{categoryeach}'
     
     return render_template('categories.html', title= title, category=category)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+@main.route('/add/<uname>')
+@login_required
+def add(uname):
+    user = User.query.filter_by(username=uname).first()
+    if user is None:
+        return redirect(url_for('auth/login.html', uname=user.username))
+            
+    return render_template('new_pitch.html')
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username=uname).first()

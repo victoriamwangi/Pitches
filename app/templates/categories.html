@@ -9,13 +9,12 @@
     {%block content%}
     <div class="container">
       <div class="row">
-        {%if category%} {%for categor in category%}
-        <div class="col-lg-2">{{categor}}</div>
-        <div class="col-lg-8">Column</div>
-        <div class="col-lg-2">Column</div>
+        {%if category%} {%for cat in category%}
+        <div class="col-lg-2">{{cat.pitch_title}}{{cat.pitch_content}}</div>
+        <div class="col-lg-8"></div>
+        <div class="col-lg-2"></div>
         {%endfor %} {%endif%}
       </div>
-      {%endif%}
     </div>
     {%endblock%}
   </body>
