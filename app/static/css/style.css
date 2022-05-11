@@ -76,8 +76,8 @@
     height: 70vh !important;
 }
 
-#registerFrm h3,
-#form-log h3 {
+#registerFrm h4,
+#form-log h4 {
     color: #554898;
     font-weight: bold;
 }
