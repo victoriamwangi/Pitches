@@ -16,7 +16,12 @@ class User(UserMixin, db.Model):
     profile_pic_path = db.Column(db.String())
     pitches = db.relationship('Pitch', backref = 'users', lazy= 'dynamic')
     
-  
+    
+    @classmethod
+    def get_mypitches(cls, pitch):
+        pitches = User.query.filter_by(pitches= pitch ).all()
+        return pitches
+
     @property
     def password(self): 
         raise AttributeError('You cannot read the password attribute')
@@ -54,8 +59,7 @@ class Pitch( db.Model):
     def get_pitches(cls, categoryEach):
         pitch = Pitch.query.filter_by(category_name = categoryEach).all()
         return pitch
-
-
+    
 
  
 

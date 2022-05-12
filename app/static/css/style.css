@@ -98,3 +98,8 @@
     color: white !important;
     font-weight: bold;
 }
+
+.profpic {
+    height: 10vw;
+    background-color: red;
+}
