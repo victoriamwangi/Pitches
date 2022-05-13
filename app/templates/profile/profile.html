@@ -31,18 +31,22 @@
     <div class"col-lg-9 " id='mypitches'>
       <h4>Pitches I've shared</h4>
        {% if pitches%}
-        <ul>
+        
+          <div class="container">
           {% for pitch in pitches%}
-          <li>{{pitch.pitch_title}} </li >
-          <li>{{pitch.pitch_content}}</li>
-          <li>{{pitch.category_name}}</li>
 
+            <h4 class="tit" style='color: purple'>TITLE:{{pitch.pitch_title}} </h4>
+            <p>Pitch Content: {{pitch.pitch_content}}</p>
+            <p style='color: red'>Category: {{pitch.category_name}}</p>
+          {% endfor%}
 
-             {% endfor%}
+          <div>
+         
+
           
 
-             {%endif%}</li>
-        </ul>
+             {%endif%}
+       
     </div>
   </div>
 </div>
