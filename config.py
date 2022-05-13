@@ -1,7 +1,6 @@
 import os
 class Config():
     
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:4798@localhost/pitch'
     SECRET_KEY = "TTTTTTo"
     os.environ.get('SECRET_KEY')
     UPLOADED_PHOTOS_DEST ='app/static/photos'
@@ -12,6 +11,8 @@ class Config():
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
 
 class DevConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:4798@localhost/pitch'
+
     DEBUG = True
     
 class ProdConfig(Config):
