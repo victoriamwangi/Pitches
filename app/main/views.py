@@ -39,33 +39,28 @@ def add(uname):
             
     return render_template('new_pitch.html')
 
-
-# @main.route('profile/<uname>/pitches')
-# @login_required
-# def add(uname):
-#     user = User.query.filter_by(username=uname).first()
-#     if user is None:
-#         return redirect(url_for('auth/login.html', uname=user.username))
-            
-#     return render_template('profile/profile.html')
-
-
 @main.route('/user/<uname>')
 def profile(uname):
-    user = User.query.filter_by(username=uname).first()
+    user = current_user
+    pitches = Pitch.query.filter_by(user_id = current_user.id).all()
+    
+    
  
     if user is None:
         abort(404)
 
-    return render_template("profile/profile.html", user=uname)
-@main.route('/user/pitches')
-def profpitch(id):
-    user = User.query.filter_by(username=id).first()
-    pitches = User.get_mypitches(pitches)
-    if user is None:
+    return render_template("profile/profile.html", user=uname, pitches= pitches)
+@main.route('/pitches')
+@login_required
+def profpitch():
+    # user = User.query.filter_by(username=id).first()
+    # pitches = Pitch.get_mypitches(pitches)  
+    pitches = Pitch.query(user_id = current_user.id).all()
+    message = "lets see"
+    if current_user is None:
         abort(404)
 
-    return render_template("profile/pitchCats.html", user=id, pitches= pitches)
+    return render_template("profile/pitchCats.html",  pitches= pitches, message= message, userName = current_user.username)
 
 
 @main.route('/user/<uname>/pitches/new', methods = ['GET', 'POST'])

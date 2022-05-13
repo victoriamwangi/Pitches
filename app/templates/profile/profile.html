@@ -22,54 +22,31 @@
 
   <body>
     {% block content %}
-    <div class="container">
-      <div class="row">
-        <!-- displaying  Username-->
+<div class="container">
 
-        <div class="col-lg-4 profpic">
-          <h3>{{user.username| capitalize}}</h3>
 
-          <!--Displaying user bio-->
-          {% if user.bio %}
-          <p>{{user.bio}}</p>
-          {%else%}
-          <p>{{user.username| capitalize}} has no bio</p>
-          {% endif %}
-        </div>
+  <div class="row">
+     <div class="col-lg-3"></div>
 
-        <!--Display profile photo-->
-        <div class="col-lg-2 profpic">
-          {% if user.profile_pic_path %}
-          <img
-            src="{{url_for('static',filename=user.profile_pic_path)}}"
-            alt=""
-            class="img-thumbnail"
-          />
-          {%else%}
-          <p>No profile picture</p>
-          {% endif %} {% if user == current_user %}
-          <a href="{{url_for('main.update_profile',uname=user.username)}}"
-            >Edit profile</a
-          >
-          {% endif %} {% if user == current_user %}
-          <form
-            action="{{url_for('main.update_pic',uname=user.username)}}"
-            method="post"
-            enctype="multipart/form-data"
-          >
-            <input type="file" name="photo" class="form-control" required />
-            <input type="submit" />
-          </form>
-          {% endif %}
-        </div>
-      </div>
+    <div class"col-lg-9 " id='mypitches'>
+      <h4>Pitches I've shared</h4>
+       {% if pitches%}
+        <ul>
+          {% for pitch in pitches%}
+          <li>{{pitch.pitch_title}} </li >
+          <li>{{pitch.pitch_content}}</li>
+          <li>{{pitch.category_name}}</li>
+
+
+             {% endfor%}
+          
+
+             {%endif%}</li>
+        </ul>
     </div>
-      <div class"col-lg-8">
+  </div>
+</div>
 
-    {%block userpitch%}{%include
-    'profile/pitchCats.html'%}{%endblock%}
-    </div>
     {%endblock%} 
-  
   </body>
 </html>

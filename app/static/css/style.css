@@ -103,3 +103,10 @@
     height: 10vw;
     background-color: red;
 }
+
+
+/* PROFILE TEMPLATE  */
+
+#mypitches ul li {
+    list-style-type: none;
+}
